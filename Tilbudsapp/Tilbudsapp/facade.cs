@@ -35,7 +35,7 @@ namespace Tilbudsapp
                     var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/" + id);
                     if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
                         throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                    result = response.Content.ReadAsAsync<T>();
+                    result = response.Content.ReadAsAsync<T>().Result;
                     return result;
                 }
                 catch (Exception ex)

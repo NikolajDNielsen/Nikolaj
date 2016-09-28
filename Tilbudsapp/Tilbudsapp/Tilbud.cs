@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tilbudsapp
 {
-    class Tilbud
+    class Tilbud :IWebUri
     {
         public int Fk_Vare_ID { get; set; }
         public int Fk_Kaede_ID { get; set; }
@@ -14,9 +14,16 @@ namespace Tilbudsapp
         public DateTime Start_Dato { get; set; }
         public DateTime Slut_Dato { get; set; }
         public int Tilbud_ID { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
 
+        public Tilbud()
+        {
+            ResourceUri = "Tilbud";
+            VerboseName = "Tilbud";
 
-        public Tilbud(int fkVareId, int fkKaedeId, int pris, DateTime startDato, DateTime slutDato)
+        }
+        public Tilbud(int fkVareId, int fkKaedeId, int pris, DateTime startDato, DateTime slutDato) : this()
         {
             Fk_Vare_ID = fkVareId;
             Fk_Kaede_ID = fkKaedeId;
@@ -25,5 +32,7 @@ namespace Tilbudsapp
             Slut_Dato = slutDato;
             
         }
+
+        
     }
 }
