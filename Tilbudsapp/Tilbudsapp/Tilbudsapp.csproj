@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kaede.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tilbud.cs" />
+    <Compile Include="Vare.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
