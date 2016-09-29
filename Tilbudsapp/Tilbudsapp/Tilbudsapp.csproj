@@ -80,10 +80,12 @@
     <Compile Include="HttpErrorException.cs" />
     <Compile Include="IWebUri.cs" />
     <Compile Include="Kaede.cs" />
+    <Compile Include="Kampagne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerErrorException.cs" />
     <Compile Include="Tilbud.cs" />
+    <Compile Include="TilbudKampagne.cs" />
     <Compile Include="Vare.cs" />
   </ItemGroup>
   <ItemGroup>
