@@ -35,7 +35,7 @@ namespace Tilbudsapp
 
                 var tilbudslistemedkæde = from t in tilbudsliste
                                           join k in kæde on t.Fk_Kaede_ID equals k.Kaede_ID
-                                          where t.Start_Dato > DateTime.Now
+                                          where t.Start_Dato > DateTime.Now && t.Slut_Dato < DateTime.Now
                                           select new { t.Pris, t.varenavn, k.Navn, t.Slut_Dato, t.Start_Dato };
 
                 foreach (var tilbud in tilbudslistemedkæde)
