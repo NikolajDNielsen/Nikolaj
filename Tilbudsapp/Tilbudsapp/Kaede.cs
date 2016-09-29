@@ -16,8 +16,8 @@ namespace Tilbudsapp
 
         public Kaede()
         {
-            ResourceUri = "Keade";
-            VerboseName = "Keade";
+            ResourceUri = "Kaedes";
+            VerboseName = "Kaede";
         }
 
         public Kaede(string navn) : this()

@@ -19,7 +19,7 @@ namespace Tilbudsapp
 
         public Tilbud()
         {
-            ResourceUri = "Tilbud";
+            ResourceUri = "Tilbuds";
             VerboseName = "Tilbud";
 
         }

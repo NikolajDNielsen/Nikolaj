@@ -25,7 +25,7 @@ namespace Tilbudsapp
 
         public Vare()
         {
-            ResourceUri = "Vare";
+            ResourceUri = "Vares";
             VerboseName = "Vare";
         }
 
