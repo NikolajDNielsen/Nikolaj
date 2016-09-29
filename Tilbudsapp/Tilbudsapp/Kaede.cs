@@ -20,7 +20,7 @@ namespace Tilbudsapp
             VerboseName = "Keade";
         }
 
-        public Kaede(string navn)
+        public Kaede(string navn) : this()
         {
             
             Navn = navn;

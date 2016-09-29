@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="facade.cs" />
+    <Compile Include="Handler.cs" />
     <Compile Include="HttpErrorException.cs" />
     <Compile Include="IWebUri.cs" />
     <Compile Include="Kaede.cs" />

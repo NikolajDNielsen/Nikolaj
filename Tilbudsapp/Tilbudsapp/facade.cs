@@ -9,6 +9,31 @@ namespace Tilbudsapp
 {
     public class facade
     {
+
+
+        public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
+                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
+                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    var listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
+                    return listOfObjects;
+                }
+                catch (Exception ex)
+                {
+                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                }
+            }
+        }
+
         private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
         // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
         private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
