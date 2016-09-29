@@ -47,15 +47,6 @@ namespace Tilbudsapp
 
 
 
-                foreach (var vare in søgtevare)
-                {
-                    var Valgtetilbud = from t in tildbud where t.Fk_Vare_ID == vare.Vare_ID select t;
-
-
-                }
-
-
-
             }
             catch (Exception e)
             {
