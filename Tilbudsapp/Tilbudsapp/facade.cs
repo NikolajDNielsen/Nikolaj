@@ -9,6 +9,9 @@ namespace Tilbudsapp
 {
     public class facade
     {
+        private const string ServerUrl = "http://xptilbud.azurewebsites.net"; // HTTP URL of Server
+        // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
+        private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
 
 
         public static async Task<IEnumerable<T>> GetListAsync<T>(T obj) where T : IWebUri
@@ -34,10 +37,7 @@ namespace Tilbudsapp
             }
         }
 
-        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
-        // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
-        private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
-
+       
        
         /// <summary>
         /// 

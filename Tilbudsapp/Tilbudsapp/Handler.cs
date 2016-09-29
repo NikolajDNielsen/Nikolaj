@@ -57,10 +57,9 @@ namespace Tilbudsapp
 
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine(e + e.Message);
             }
 
         }
