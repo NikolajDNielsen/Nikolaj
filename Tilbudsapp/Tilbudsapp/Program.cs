@@ -10,8 +10,8 @@ namespace Tilbudsapp
     {
         static void Main(string[] args)
         {
-          
-            Handler.søgetilbud();
+         Handler.søgekampagne(); 
+     // Handler.søgetilbud();
             
           
         }

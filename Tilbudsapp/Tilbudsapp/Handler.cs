@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Tilbudsapp
 {
@@ -22,7 +23,7 @@ namespace Tilbudsapp
                 var Vare = facade.GetListAsync(new Vare()).Result;
 
 
-               
+
                 Console.WriteLine("Skriv hele eller dele af varenavnet");
                 string søgeord = Console.ReadLine();
 
@@ -84,9 +85,45 @@ namespace Tilbudsapp
 
             var søgtevare = from k in kampagne where (k.Navn.ToLower().Contains(søgeord)) select k;
 
-            var tilbudsliste = from k in søgtevare
-                               join t in kæde on k.Fk_kaede_ID equals t.Kaede_ID
-                               select new { k, t.Kaede_ID,  };
+            var kampanieliste1 = from k in søgtevare
+                                 join t in kæde on k.Fk_kaede_ID equals t.Kaede_ID
+                                 select new { k, t };
+            //Console.WriteLine("1" + kampanieliste1);
+            var kampanieliste2 = from k in kampanieliste1
+                                 join J in Tilbudkampagne on k.k.Kampagne_ID equals J.Fk_Kampagne_ID
+                                 select new { k, J };
+            //Console.WriteLine("2" + kampanieliste2);
+            var kampanieliste3 = from k in kampanieliste2
+                                 join i in tildbud on k.J.Fk_Tilbud_ID equals i.Tilbud_ID
+                                 select new { k, i };
+            //  Console.WriteLine("3" + kampanieliste3);
+            var kampanieliste4 = from k in kampanieliste3
+                                 join v in Vare on k.i.Fk_Vare_ID equals v.Vare_ID
+                                 where k.i.Start_Dato < DateTime.Now && k.i.Slut_Dato > DateTime.Now
+                                 select
+                new
+                {
+                    VareNavn = v.Navn,
+                    Kædenavn = k.k.k.t.Navn,
+                    Kampagnenavn = k.k.k.k.Navn,
+                    k.i.Pris,
+                    Stardato = k.i.Start_Dato,
+                    Slutdato = k.i.Slut_Dato
+                };
+            Console.Clear();
+            List<string> kampanienavne = new List<string>();
+
+            foreach (var tilbud in kampanieliste4)
+            {
+                if (!kampanienavne.Contains(tilbud.Kædenavn))
+                {
+                    kampanienavne.Add(tilbud.Kædenavn);
+                }
+                Console.WriteLine("KampanieNavn: " + tilbud.Kampagnenavn + "\n" + "Varenavn: " + tilbud.VareNavn + "\n" + "Pris: " + tilbud.Pris + "\n" + "Butik: " + tilbud.Kædenavn + "\n" + "Fra og Med: " + tilbud.Stardato + "\n" + "Til og med: " + tilbud.Slutdato + "\n");
+            }
+
+
+
 
 
 

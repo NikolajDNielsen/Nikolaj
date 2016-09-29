@@ -10,15 +10,17 @@ namespace Tilbudsapp
     class TilbudKampagne : IWebUri
     {
 
-        public int Fk_kampagne_ID { get; set; }
+        public int Fk_Kampagne_ID { get; set; }
 
-        public int Fk_tilbud { get; set; }
+        public int Fk_Tilbud_ID { get; set; }
+
+        public int TK_ID { get; set; }
 
 
-        public TilbudKampagne(int fkKampagneId, int fkTilbud)
+        public TilbudKampagne(int fkKampagneId, int fkTilbud) : this()
         {
-            Fk_kampagne_ID = fkKampagneId;
-            Fk_tilbud = fkTilbud;
+            Fk_Kampagne_ID = fkKampagneId;
+            Fk_Tilbud_ID = fkTilbud;
         }
 
     
