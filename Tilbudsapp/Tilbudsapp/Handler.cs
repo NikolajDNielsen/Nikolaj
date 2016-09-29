@@ -74,7 +74,7 @@ namespace Tilbudsapp
             var kampagne = facade.GetListAsync(new Kampagne()).Result;
 
 
-            Console.WriteLine("Skriv hele eller dele af varenavnet");
+            Console.WriteLine("Skriv hele eller dele af KampanieNavnet");
             string søgeord = Console.ReadLine();
 
 
