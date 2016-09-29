@@ -25,9 +25,13 @@ namespace Tilbudsapp
                 Console.WriteLine("Skriv hele eller dele af varenavnet");
                 string søgeord = Console.ReadLine();
 
+                if (søgeord == null)
+                {
+                    søgeord = "";
+                }
 
 
-                var søgtevare = from v in Vare where søgeord != null && (v.Navn.Contains(søgeord)) select v;
+                var søgtevare = from v in Vare where (v.Navn.Contains(søgeord)) select v;
 
                 var tilbudsliste = from s in søgtevare
                                    join t in tildbud on s.Vare_ID equals t.Fk_Vare_ID
